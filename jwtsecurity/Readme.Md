@@ -1,33 +1,41 @@
-🔐 JWT Security Spring Boot Project
-📌 Project Overview
+# 🔐 JWT Security Spring Boot Project
 
-This project demonstrates JWT (JSON Web Token) based authentication and authorization using Spring Boot. It includes user registration, login, and access to protected REST APIs with role-based security.
+## 📌 Project Overview
+This project is a Spring Boot application implementing JWT-based authentication and authorization. It allows users to register, login, and access secured REST APIs using JSON Web Tokens.
 
-⚙️ Tech Stack
-Java 17+
-Spring Boot
-Spring Security
-JWT (JSON Web Token)
-Spring Data JPA
-H2 Database
-Maven
-🚀 Features
-User Registration API
-User Login API (JWT Token generation)
-Secure REST endpoints using JWT
-Role-based access control (USER role)
-Spring Security filter (JWT validation)
-Stateless authentication
-In-memory H2 database
-📡 API Endpoints
-🔹 1. Register User
+The system uses Spring Security + JWT + H2 Database to demonstrate stateless authentication.
 
-URL:
+---
 
+## ⚙️ Tech Stack
+- Java 17+
+- Spring Boot
+- Spring Security
+- JWT (JSON Web Token)
+- Spring Data JPA
+- H2 Database (In-memory)
+- Maven
+
+---
+
+## 🚀 Features
+- User Registration API
+- User Login API with JWT token generation
+- Secured REST endpoints
+- Role-based authorization (USER role)
+- JWT Authentication Filter
+- Password encryption using BCrypt
+- Stateless session management
+- In-memory H2 database
+
+---
+
+## 📡 API Endpoints
+
+### 1. Register User
 POST http://localhost:8080/auth/register
 
 Request Body:
-
 {
   "username": "jaya",
   "password": "1234",
@@ -35,60 +43,98 @@ Request Body:
 }
 
 Response:
-
 User registered successfully
-🔹 2. Login User
 
-URL:
+---
 
+### 2. Login User
 POST http://localhost:8080/auth/login
 
 Request Body:
-
 {
   "username": "jaya",
   "password": "1234"
 }
 
 Response:
-
 JWT Token (string)
-🔹 3. Protected API
 
-URL:
+---
 
+### 3. Protected API
 GET http://localhost:8080/user/home
 
 Headers:
-
 Authorization: Bearer <JWT_TOKEN>
 
 Response:
-
 Welcome User!
-🗄️ H2 Database Console
 
-Access H2 database:
+---
 
+## 🗄️ H2 Database Console
 http://localhost:8080/h2-console
+
 Login Details:
 JDBC URL: jdbc:h2:mem:testdb
 Username: sa
 Password: (leave empty)
-▶️ How to Run the Project
-Step 1: Clone the repository
+
+---
+
+## ▶️ How to Run the Project
+
+Step 1: Clone Repository
 git clone <your-repo-url>
-Step 2: Navigate to project folder
+
+Step 2: Navigate to Project
 cd jwtsecurity
-Step 3: Run the application
+
+Step 3: Run Application
 mvn spring-boot:run
-🔐 Security Flow
-Register user → stores data in DB
-Login user → generates JWT token
-Token is sent in Authorization header
-Filter validates token
-Access granted to protected endpoints
- Note
-This project uses stateless authentication
-All secure APIs require JWT token
-H2 database resets on every restart
+
+---
+
+## 🔐 JWT Authentication Flow
+User registers using /auth/register  
+User logs in using /auth/login  
+Server generates JWT token  
+Token is sent in Authorization header  
+Spring Security filter validates token  
+Access granted to secured APIs  
+
+---
+
+## 📁 Project Structure
+jwtsecurity
+ ├── config
+ │    ├── JwtAuthFilter
+ │    ├── JwtUtil
+ │    ├── SecurityConfig
+ ├── controller
+ │    ├── AuthController
+ │    ├── UserController
+ ├── entity
+ │    ├── User
+ ├── service
+ │    ├── UserService
+ │    ├── UserDetailsServiceImpl
+ ├── repository
+ │    ├── UserRepository
+ ├── dto
+ │    ├── LoginRequest
+ │    ├── RegisterRequest
+ ├── JwtsecurityApplication.java
+ ├── pom.xml
+
+---
+
+## 👨‍💻 Author
+Jaya Madhuri
+
+---
+
+## 📌 Note
+This project uses stateless JWT authentication  
+H2 database resets on every restart  
+All secured endpoints require valid JWT token
